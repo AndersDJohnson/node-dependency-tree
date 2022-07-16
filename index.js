@@ -33,7 +33,9 @@ module.exports = function(options) {
     return config.isListForm ? [] : {};
   }
 
-  const params = { treePath: [] };
+  const params = {
+    treePath: []
+  };
 
   const results = traverse(config, params);
   debug('traversal complete', results);
@@ -176,7 +178,7 @@ function traverse(config, params) {
     const newParams = {
       ...params,
       treePath: [...(params.treePath ? params.treePath : []), config.filename]
-    }
+    };
 
     if (localConfig.isListForm) {
       for (let item of traverse(localConfig, newParams)) {
